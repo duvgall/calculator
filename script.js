@@ -49,3 +49,73 @@ function two() {
     const display = document.getElementById('display');
     display.textContent += '2';
 }
+
+function three() {
+    const display = document.getElementById('display');
+    display.textContent += '3';
+}
+
+function four() {
+    const display = document.getElementById('display');
+    display.textContent += '4';
+}
+
+function five() {
+    const display = document.getElementById('display');
+    display.textContent += '5';
+}
+
+function six() {
+    const display = document.getElementById('display');
+    display.textContent += '6';
+}
+
+function seven() {
+    const display = document.getElementById('display');
+    display.textContent += '7';
+}
+
+function eight() {
+    const display = document.getElementById('display');
+    display.textContent += '8';
+}
+
+function nine() {
+    const display = document.getElementById('display');
+    display.textContent += '9';
+}
+
+function zero() {
+    const display = document.getElementById('display');
+    display.textContent += '0';
+}
+
+function plusSymbol() {
+    const display = document.getElementById('display');
+    display.textContent += '+';
+}
+
+function subtractSymbol() {
+    const display = document.getElementById('display');
+    display.textContent += '-';
+}
+
+function multiplySymbol() {
+    const display = document.getElementById('display');
+    display.textContent += 'x';
+}
+
+function divideSymbol() {
+    const display = document.getElementById('display');
+    display.textContent += '/';
+}
+
+function equalsSymbol() {
+    const display = document.getElementById('display');
+    display.textContent += '=';
+}
+
+function decimalPoint() {
+    const display = document.getElementById('display');
+    display.textContent += '.';
+}
