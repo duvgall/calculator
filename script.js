@@ -39,3 +39,13 @@ console.log(operator(4, 4, '+'));
 console.log(operator(4, 4, '-'));
 console.log(operator(4, 4, '*'));
 console.log(operator(4, 4, '/'));
+
+function one() {
+    const display = document.getElementById('display');
+    display.textContent += '1';
+}
+
+function two() {
+    const display = document.getElementById('display');
+    display.textContent += '2';
+}
