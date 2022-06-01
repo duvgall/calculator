@@ -1,3 +1,8 @@
+let firstNumber = 0;                        //variable to store first input after display is cleared for second input
+let total = 0;                              //variable to display running and final solution
+
+
+
 function add(a, b) {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amend a and b while storing value
     
     return a + b;
@@ -90,12 +95,12 @@ function zero() {
     display.textContent += '0';
 }
 
-function plusSymbol() {
-    const display = document.getElementById('display');
-    display.textContent += '+';
-}
-
-function subtractSymbol() {
+function plusSymbol() {                                             //get current number from display and store it in a variable.
+    const display = document.getElementById('display');             //store + in symbol to be used in operator function
+    display.textContent += '+';                                     //clear the display
+}                                                                   // if variable one is not empty run equals and display total
+                                                                    //then assign value of total to variable one
+function subtractSymbol() {                                         //no need for any textContent to be added. remove this later.
     const display = document.getElementById('display');
     display.textContent += '-';
 }
@@ -118,4 +123,11 @@ function equalsSymbol() {
 function decimalPoint() {
     const display = document.getElementById('display');
     display.textContent += '.';
+}
+
+function clear() {
+    const display = document.getElementById('display');
+    display.textContent += '';
+    firstNumber = 0;
+    total = 0;
 }
