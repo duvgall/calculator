@@ -1,4 +1,5 @@
-let firstNumber = 0;                        //variable to store first input after display is cleared for second input
+let firstNumber = 0;
+let secondNumber;                        //variable to store first input after display is cleared for second input
 let total = 0;  
 let symbol;                                       //variable to display running and final solution
 const display = document.getElementById('display'); 
@@ -6,35 +7,46 @@ const runningTotal = document.getElementById('running-total');
 
 
 
-function add(a, b) {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amend a and b while storing value
-    
-    return a + b;
+function add() {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amendfirstNumberand b while storing value
+    firstNumber = total;
+    secondNumber = display.textContent;
+    total = Number(firstNumber) + Number(secondNumber);
+    runningTotal.textContent = total;
+    display.textContent = ' ';
+    console.log(firstNumber);
+    console.log(secondNumber);
+    console.log(total);
+    console.log(display.textContent);
 }
 
-function subtract(a, b) {
-    
-    return a - b;
+function subtract(firstNumber, secondNumber) {
+    total = Number(firstNumber) - Number(secondNumber);
+    runningTotal.textContent = total;
+    display.textContent = ' ';
 }
 
-function multiply(a, b) {
-
-    return a * b;
+function multiply(firstNumber, secondNumber) {
+    total = Number(firstNumber) * Number(secondNumber);
+    runningTotal.textContent = total;
+    display.textContent = ' ';
 }
 
-function divide(a, b) {
-
-    return a / b;
+function divide(firstNumber, secondNumber) {
+    total =Number(firstNumber) / Number(secondNumber);
+    runningTotal.textContent = total;
+    display.textContent = ' ';
 }
 
-function operator(a, b, symbol) {           // function to call one of the four basic function depending on user input
+
+function operator(firstNumber, secondNumber, symbol) {           // function to call one of the four basic function depending on user input
     if(symbol == '+') {
-        return add(a, b);
+         add();
     }else if(symbol == '-') {
-        return subtract(a, b);
+         subtract(firstNumber, secondNumber);
     } else if(symbol == '*') {
-       return multiply(a, b);
+         multiply(firstNumber, secondNumber);
     } else if(symbol == '/') {
-        return divide(a, b);
+         divide(firstNumber, secondNumber);
     }
 
 }
@@ -90,7 +102,7 @@ function zero() {
     display.textContent += '0';
 }
 
-function plusSymbol() {                                             //get current number from display and store it in a variable.
+function plusSymbol() {                                             //get current number from display and store it infirstNumbervariable.
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) + Number(display.textContent);
         runningTotal.textContent = total;
@@ -100,9 +112,11 @@ function plusSymbol() {                                             //get curren
         runningTotal.textContent = total
         display.textContent = ' ';
     } else {
-        firstNumber = display.textContent;   
+        firstNumber = display.textContent; 
+        total = firstNumber;  
         symbol = '+';                                                  
-        display.textContent = ' ';      
+        display.textContent = ' ';
+        console.log(firstNumber)      
     }
 }                                                                   // if variable one is not empty run equals and display total
                                                                     //then assign value of total to variable one
@@ -157,8 +171,10 @@ function divideSymbol() {
 }
 
 function equalsSymbol() {
-    
-    display.textContent = total
+ 
+
+    operator(firstNumber, secondNumber, symbol);
+
 }
 
 function decimalPoint() {
