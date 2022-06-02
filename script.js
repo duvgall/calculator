@@ -1,7 +1,8 @@
 let firstNumber = 0;                        //variable to store first input after display is cleared for second input
 let total = 0;  
 let symbol;                                       //variable to display running and final solution
-const display = document.getElementById('display');                       
+const display = document.getElementById('display'); 
+const runningTotal = document.getElementById('running-total');                     
 
 
 
@@ -90,9 +91,14 @@ function zero() {
 }
 
 function plusSymbol() {                                             //get current number from display and store it in a variable.
-    if(firstNumber != 0) {
+    if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) + Number(display.textContent);
-        display.textContent = total;
+        runningTotal.textContent = total;
+        display.textContent = ' ';
+    } else if( firstNumber != 0 && total != 0) {;
+        total = Number(total) + Number(display.textContent);
+        runningTotal.textContent = total
+        display.textContent = ' ';
     } else {
         firstNumber = display.textContent;   
         symbol = '+';                                                  
@@ -101,37 +107,48 @@ function plusSymbol() {                                             //get curren
 }                                                                   // if variable one is not empty run equals and display total
                                                                     //then assign value of total to variable one
 function subtractSymbol() {                                         //no need for any textContent to be added. remove this later.
-    if(firstNumber != 0) {
+    if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) - Number(display.textContent);
-        display.textContent = total;
+        runningTotal.textContent = total;
+        display.textContent = ' ';
+    } else if( firstNumber != 0 && total != 0) {;
+        total = Number(total) - Number(display.textContent);
+        runningTotal.textContent = total
+        display.textContent = ' ';
     } else {
         firstNumber = display.textContent;   
         symbol = '-';                                                  
         display.textContent = ' ';      
     }
-    console.log(firstNumber);
 }
 
 function multiplySymbol() {
     
-    if(firstNumber != 0) {
+    if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) * Number(display.textContent);
-        display.textContent = total;
+        runningTotal.textContent = total;
+        display.textContent = ' ';
+    } else if( firstNumber != 0 && total != 0) {;
+        total = Number(total) * Number(display.textContent);
+        runningTotal.textContent = total
+        display.textContent = ' ';
     } else {
         firstNumber = display.textContent;   
         symbol = 'x';                                                  
         display.textContent = ' ';      
-    }
+    }      
 }
 
 function divideSymbol() {
     
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) / Number(display.textContent);
-        display.textContent = total;
-    } else if( firstNumber != 0 && total != 0) {
+        runningTotal.textContent = total;
+        display.textContent = ' ';
+    } else if( firstNumber != 0 && total != 0) {;
         total = Number(total) / Number(display.textContent);
-        display.textContent = total;
+        runningTotal.textContent = total
+        display.textContent = ' ';
     } else {
         firstNumber = display.textContent;   
         symbol = '/';                                                  
@@ -152,6 +169,7 @@ function decimalPoint() {
 function clearButton() {
     
     display.textContent = ' ';
+    runningTotal.textContent = ' ';
     firstNumber = 0;
     total = 0;
 }
