@@ -1,5 +1,7 @@
 let firstNumber = 0;                        //variable to store first input after display is cleared for second input
-let total = 0;                              //variable to display running and final solution
+let total = 0;  
+let symbol;                                       //variable to display running and final solution
+const display = document.getElementById('display');                       
 
 
 
@@ -23,11 +25,6 @@ function divide(a, b) {
     return a / b;
 }
 
-console.log(add(4, 5));                     // testing basic functionality
-console.log(subtract(13, 5));
-console.log(multiply(2, 4));
-console.log(divide(24, 3));
-
 function operator(a, b, symbol) {           // function to call one of the four basic function depending on user input
     if(symbol == '+') {
         return add(a, b);
@@ -40,94 +37,121 @@ function operator(a, b, symbol) {           // function to call one of the four 
     }
 
 }
-console.log(operator(4, 4, '+'));
-console.log(operator(4, 4, '-'));
-console.log(operator(4, 4, '*'));
-console.log(operator(4, 4, '/'));
 
 function one() {
-    const display = document.getElementById('display');
+    
     display.textContent += '1';
+    firstNumber = display.textContent;
 }
 
 function two() {
-    const display = document.getElementById('display');
+    
     display.textContent += '2';
 }
 
 function three() {
-    const display = document.getElementById('display');
+    
     display.textContent += '3';
 }
 
 function four() {
-    const display = document.getElementById('display');
+    
     display.textContent += '4';
 }
 
 function five() {
-    const display = document.getElementById('display');
+    
     display.textContent += '5';
 }
 
 function six() {
-    const display = document.getElementById('display');
+    
     display.textContent += '6';
 }
 
 function seven() {
-    const display = document.getElementById('display');
+    
     display.textContent += '7';
 }
 
 function eight() {
-    const display = document.getElementById('display');
+    
     display.textContent += '8';
 }
 
 function nine() {
-    const display = document.getElementById('display');
+    
     display.textContent += '9';
 }
 
 function zero() {
-    const display = document.getElementById('display');
+    
     display.textContent += '0';
 }
 
 function plusSymbol() {                                             //get current number from display and store it in a variable.
-    const display = document.getElementById('display');             //store + in symbol to be used in operator function
-    display.textContent += '+';                                     //clear the display
+    if(firstNumber != 0) {
+        total = Number(firstNumber) + Number(display.textContent);
+        display.textContent = total;
+    } else {
+        firstNumber = display.textContent;   
+        symbol = '+';                                                  
+        display.textContent = ' ';      
+    }
 }                                                                   // if variable one is not empty run equals and display total
                                                                     //then assign value of total to variable one
 function subtractSymbol() {                                         //no need for any textContent to be added. remove this later.
-    const display = document.getElementById('display');
-    display.textContent += '-';
+    if(firstNumber != 0) {
+        total = Number(firstNumber) - Number(display.textContent);
+        display.textContent = total;
+    } else {
+        firstNumber = display.textContent;   
+        symbol = '-';                                                  
+        display.textContent = ' ';      
+    }
+    console.log(firstNumber);
 }
 
 function multiplySymbol() {
-    const display = document.getElementById('display');
-    display.textContent += 'x';
+    
+    if(firstNumber != 0) {
+        total = Number(firstNumber) * Number(display.textContent);
+        display.textContent = total;
+    } else {
+        firstNumber = display.textContent;   
+        symbol = 'x';                                                  
+        display.textContent = ' ';      
+    }
 }
 
 function divideSymbol() {
-    const display = document.getElementById('display');
-    display.textContent += '/';
+    
+    if(firstNumber != 0 & total === 0) {
+        total = Number(firstNumber) / Number(display.textContent);
+        display.textContent = total;
+    } else if( firstNumber != 0 && total != 0) {
+        total = Number(total) / Number(display.textContent);
+        display.textContent = total;
+    } else {
+        firstNumber = display.textContent;   
+        symbol = '/';                                                  
+        display.textContent = ' ';      
+    }
 }
 
 function equalsSymbol() {
-    const display = document.getElementById('display');
-    display.textContent += '=';
+    
+    display.textContent = total
 }
 
 function decimalPoint() {
-    const display = document.getElementById('display');
-    display.textContent += '.';
+    
+    display.textContent = ' ';
 }
 
-function clear() {
-    const display = document.getElementById('display');
-    display.textContent += '';
+function clearButton() {
+    
+    display.textContent = ' ';
     firstNumber = 0;
     total = 0;
 }
