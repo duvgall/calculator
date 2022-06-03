@@ -3,56 +3,52 @@ let secondNumber;                        //variable to store first input after d
 let total = 0;  
 let symbol = ' ';                                       //variable to display running and final solution
 let display = document.getElementById('display'); 
-let runningTotal = document.getElementById('running-total');                     
+//let runningTotal = document.getElementById('running-total');                     
 
 
 
 function add() {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amendfirstNumberand b while storing value
     total = Number(firstNumber) + Number(secondNumber);
-    runningTotal.textContent = total;
+    //runningTotal.textContent = total;
     display.textContent = ' ';
-    console.log(total);
-    console.log(firstNumber);
-    console.log(secondNumber);
+    firstNumber = total;
+    secondNumber = 0;
 }
 
-function subtract(firstNumber, secondNumber) {
-    firstNumber = total;
-    secondNumber = display.textContent;
+function subtract() {
     total = Number(firstNumber) - Number(secondNumber);
-    runningTotal.textContent = total;
+    //runningTotal.textContent = total;
     display.textContent = ' ';
+    firstNumber = total;
+    secondNumber = 0;
 }
 
-function multiply(firstNumber, secondNumber) {
-    firstNumber = total;
-    secondNumber = display.textContent;
+function multiply() {
     total = Number(firstNumber) * Number(secondNumber);
-    runningTotal.textContent = total;
+    //runningTotal.textContent = total;
     display.textContent = ' ';
+    firstNumber = total;
+    secondNumber = 0;
 }
 
-function divide(firstNumber, secondNumber) {
-    firstNumber = total;
-    secondNumber = display.textContent;
+function divide() {
     total = Number(firstNumber) / Number(secondNumber);
-    runningTotal.textContent = total;
+    //runningTotal.textContent = total;
     display.textContent = ' ';
+    firstNumber = total;
+    secondNumber = 0;
 }
 
 
 function operator(firstNumber, secondNumber, symbol) {           // function to call one of the four basic function depending on user input
     if(symbol == '+') {
          add();
-         console.log(firstNumber);
-        console.log(secondNumber);
-        console.log(symbol);
     }else if(symbol == '-') {
-         subtract(firstNumber, secondNumber);
+         subtract();
     } else if(symbol == '*') {
-         multiply(firstNumber, secondNumber);
+         multiply();
     } else if(symbol == '/') {
-         divide(firstNumber, secondNumber);
+         divide();
     }
 
 }
@@ -111,14 +107,14 @@ function plusSymbol() {
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) + Number(display.textContent);
         symbol = '+';
-        runningTotal.textContent = total;
-        display.textContent = ' ';
+       // runningTotal.textContent = total;
+        display.textContent = total;
         console.log(firstNumber);
     } else if( firstNumber != 0 && total != 0) {;
         total = Number(total) + Number(display.textContent);
         symbol = '+';
-        runningTotal.textContent = total
-        display.textContent = ' ';
+        //runningTotal.textContent = total
+        display.textContent = total;
         console.log(firstNumber);
     } else {
         firstNumber = display.textContent;   
@@ -132,14 +128,14 @@ function subtractSymbol() {
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) - Number(display.textContent);
         symbol = '-';
-        runningTotal.textContent = total;
-        display.textContent = ' ';
+        //runningTotal.textContent = total;
+        display.textContent = total;
         console.log(firstNumber);
     } else if( firstNumber != 0 && total != 0) {;
         total = Number(total) - Number(display.textContent);
         symbol = '-';
-        runningTotal.textContent = total
-        display.textContent = ' ';
+       // runningTotal.textContent = total
+        display.textContent = total;
         console.log(firstNumber);
     } else {
         firstNumber = display.textContent;   
@@ -154,14 +150,14 @@ function multiplySymbol() {
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) * Number(display.textContent);
         symbol = '*';
-        runningTotal.textContent = total;
-        display.textContent = ' ';
+        //runningTotal.textContent = total;
+        display.textContent = total;
         console.log(firstNumber);
     } else if( firstNumber != 0 && total != 0) {;
         total = Number(total) * Number(display.textContent);
         symbol = '*';
-        runningTotal.textContent = total
-        display.textContent = ' ';
+        //runningTotal.textContent = total
+        display.textContent = total;
         console.log(firstNumber);
     } else {
         firstNumber = display.textContent;   
@@ -176,14 +172,14 @@ function divideSymbol() {
     if(firstNumber != 0 & total === 0) {
         total = Number(firstNumber) / Number(display.textContent);
         symbol = '/';
-        runningTotal.textContent = total;
-        display.textContent = ' ';
+        //runningTotal.textContent = total;
+        display.textContent = total;
         console.log(firstNumber);
     } else if( firstNumber != 0 && total != 0) {;
         total = Number(total) / Number(display.textContent);
         symbol = '/';
-        runningTotal.textContent = total
-        display.textContent = ' ';
+        //runningTotal.textContent = total
+        display.textContent = total;
         console.log(firstNumber);
     } else {
         firstNumber = display.textContent;   
@@ -205,6 +201,12 @@ function equalsSymbol() {
         operator(firstNumber, secondNumber, symbol)
         console.log(firstNumber);
         console.log(secondNumber);
+    }else if(firstNumber == 0 && total == 0){
+        firstNumber = display.textContent;
+        operator(firstNumber, secondNumber, symbol);
+        console.log(firstNumber);
+        console.log(symbol);
+        console.log(secondNumber);
     }
 
 }
@@ -217,7 +219,7 @@ function decimalPoint() {
 function clearButton() {
     
     display.textContent = ' ';
-    runningTotal.textContent = ' ';
+    //runningTotal.textContent = ' ';
     firstNumber = 0;
     total = 0;
     symbol = ' ';
