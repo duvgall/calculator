@@ -8,11 +8,12 @@ let runningTotal = document.getElementById('running-total');
 
 
 function add() {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amendfirstNumberand b while storing value
-    firstNumber = total;
-    secondNumber = display.textContent;
     total = Number(firstNumber) + Number(secondNumber);
     runningTotal.textContent = total;
     display.textContent = ' ';
+    console.log(total);
+    console.log(firstNumber);
+    console.log(secondNumber);
 }
 
 function subtract(firstNumber, secondNumber) {
@@ -43,6 +44,9 @@ function divide(firstNumber, secondNumber) {
 function operator(firstNumber, secondNumber, symbol) {           // function to call one of the four basic function depending on user input
     if(symbol == '+') {
          add();
+         console.log(firstNumber);
+        console.log(secondNumber);
+        console.log(symbol);
     }else if(symbol == '-') {
          subtract(firstNumber, secondNumber);
     } else if(symbol == '*') {
@@ -194,9 +198,13 @@ function equalsSymbol() {
     if (firstNumber != 0 && total == 0) {
         secondNumber = display.textContent;
         operator(firstNumber, secondNumber, symbol);
+        console.log(firstNumber);
+        console.log(secondNumber);
     } else if(firstNumber != 0 && total != 0) {
         secondNumber = total;
         operator(firstNumber, secondNumber, symbol)
+        console.log(firstNumber);
+        console.log(secondNumber);
     }
 
 }
