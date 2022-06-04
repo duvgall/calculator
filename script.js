@@ -1,46 +1,56 @@
 let firstNumber = 0;
-let secondNumber;                        //variable to store first input after display is cleared for second input
+let secondNumber = 0;                        //variable to store first input after display is cleared for second input
 let total = 0;  
 let symbol = ' ';                                       //variable to display running and final solution
 let display = document.getElementById('display'); 
+let buttons = document.getElementsByClassName('numBtn')
 //let runningTotal = document.getElementById('running-total');                     
 
 
 
 function add() {                        // add two numbers. For each function below, will need to use DOM methods to take input from calculator and amendfirstNumberand b while storing value
+    console.log(firstNumber);
+    console.log(secondNumber);
+    console.log(total);
     total = Number(firstNumber) + Number(secondNumber);
     //runningTotal.textContent = total;
-    display.textContent = ' ';
-    firstNumber = total;
+    display.textContent = total;
+    firstNumber = 0;
     secondNumber = 0;
+    console.log(firstNumber);
+    console.log(secondNumber);
+    console.log(total);
 }
 
 function subtract() {
     total = Number(firstNumber) - Number(secondNumber);
     //runningTotal.textContent = total;
-    display.textContent = ' ';
-    firstNumber = total;
+    display.textContent = total;
+    firstNumber = 0;
     secondNumber = 0;
 }
 
 function multiply() {
     total = Number(firstNumber) * Number(secondNumber);
     //runningTotal.textContent = total;
-    display.textContent = ' ';
-    firstNumber = total;
+    display.textContent = total;
+    firstNumber = 0;
     secondNumber = 0;
 }
 
 function divide() {
     total = Number(firstNumber) / Number(secondNumber);
     //runningTotal.textContent = total;
-    display.textContent = ' ';
-    firstNumber = total;
+    display.textContent = total;
+    firstNumber = 0;
     secondNumber = 0;
 }
 
 
-function operator(firstNumber, secondNumber, symbol) {           // function to call one of the four basic function depending on user input
+function operator(firstNumber, secondNumber, symbol) {          // function to call one of the four basic function depending on user input
+    console.log(firstNumber);
+    console.log(secondNumber);
+    console.log(total);
     if(symbol == '+') {
          add();
     }else if(symbol == '-') {
@@ -103,29 +113,38 @@ function zero() {
     display.textContent += '0';
 }
 
-function plusSymbol() {                                             
-    if(firstNumber != 0 & total === 0) {
-        total = Number(firstNumber) + Number(display.textContent);
+function plusSymbol() {                                            
+    if(firstNumber === 0 && total != 0) {
         symbol = '+';
        // runningTotal.textContent = total;
-        display.textContent = total;
+        display.textContent = ' ';
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', changeFirstNumber);           //change first number on next button click
+        }
+        
         console.log(firstNumber);
+        console.log(secondNumber);
+        console.log(total);
     } else if( firstNumber != 0 && total != 0) {;
+        firstNumber = display.textContent;
         total = Number(total) + Number(display.textContent);
         symbol = '+';
         //runningTotal.textContent = total
         display.textContent = total;
         console.log(firstNumber);
+        console.log(secondNumber);
+        console.log(total);
     } else {
         firstNumber = display.textContent;   
         symbol = '+';                                                  
         display.textContent = ' ';
-        console.log(firstNumber);      
+        console.log(firstNumber);
+        console.log(total);      
     }
 }                                                                  
                                                                     
 function subtractSymbol() {                                         
-    if(firstNumber != 0 & total === 0) {
+    if(firstNumber != 0 && total === 0) {
         total = Number(firstNumber) - Number(display.textContent);
         symbol = '-';
         //runningTotal.textContent = total;
@@ -147,7 +166,7 @@ function subtractSymbol() {
 
 function multiplySymbol() {
     
-    if(firstNumber != 0 & total === 0) {
+    if(firstNumber != 0 && total === 0) {
         total = Number(firstNumber) * Number(display.textContent);
         symbol = '*';
         //runningTotal.textContent = total;
@@ -169,7 +188,7 @@ function multiplySymbol() {
 
 function divideSymbol() {
     
-    if(firstNumber != 0 & total === 0) {
+    if(firstNumber != 0 && total === 0) {
         total = Number(firstNumber) / Number(display.textContent);
         symbol = '/';
         //runningTotal.textContent = total;
@@ -196,17 +215,21 @@ function equalsSymbol() {
         operator(firstNumber, secondNumber, symbol);
         console.log(firstNumber);
         console.log(secondNumber);
+        console.log(total);
     } else if(firstNumber != 0 && total != 0) {
         secondNumber = total;
         operator(firstNumber, secondNumber, symbol)
         console.log(firstNumber);
         console.log(secondNumber);
+        console.log(total);
     }else if(firstNumber == 0 && total == 0){
-        firstNumber = display.textContent;
-        operator(firstNumber, secondNumber, symbol);
         console.log(firstNumber);
-        console.log(symbol);
         console.log(secondNumber);
+        console.log(total);
+    } else if(firstNumber == 0 && total != 0) {
+        firstNumber == display.textContent;
+        secondNumber = total;
+        operator(firstNumber, secondNumber, symbol)
     }
 
 }
@@ -224,4 +247,8 @@ function clearButton() {
     total = 0;
     symbol = ' ';
     secondNumber = 0;
+}
+
+function changeFirstNumber() {
+    firstNumber = display.textContent;
 }
